@@ -1,6 +1,6 @@
 import express from 'express';
-import { promises as fsPromises } from 'fs';
 import fs from 'fs';
+import { processImage } from '../../utilities/image-processing';
 import { imageValidator } from '../../utilities/validators';
 
 const router = express.Router();
@@ -21,7 +21,12 @@ router.get('/image', imageValidator, async (req, res, next) => {
         );
     // else, process the image then save it into the storage to cache it
     else {
-      //TODO
+      await processImage(Number(req.query.width), Number(req.query.height));
+      res
+        .status(200)
+        .send(
+          `<img src="http://localhost:3003/thumbnails/${req.query.name}_${req.query.width}x${req.query.height}.jpeg" alt="Processed Homelander"/>`
+        );
     }
   } catch (err) {
     // If an error in the server occurs, return 500 status code
