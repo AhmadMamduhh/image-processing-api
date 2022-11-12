@@ -1,0 +1,29 @@
+Important scripts: 
+
+1- Build: npm run build
+2- Test: npm run test
+3- Start: npm run start
+4- Lint: npm run lint
+5- Lint and fix: npm run lint-and-fix
+6- Prettier: npm run prettier
+
+
+API Endpoints:
+
+1- /api/image?name=string&width=number&height=number:
+- This endpoint takes three query parameters which are name, widht and height if any of the three query params does not exist,
+ the endpoint will return 400. If the width or height values are 0 or less, the endpoint will return 400 as well.
+- The endpoint returns 404 if the name provided does not match the name of the image in the storage/image folder.
+- The endpoint returns 200 if all query params are valid. It returns a generated image with the width and height provided
+in the query params.
+- If the endpoint receives another request with repeated values of the width and height, it will return the same cached image from
+the storage/thumbnails folder. if the values of width and height are not repeated, a new image will be generated with the appropriate
+size and it will be saved in this format name_[width]x[height].jpeg in the storage/thumbnails folder.
+
+Extra functionality:
+- I have added a validator middleware which validates the data of the query parameters before entering the /api/image route.
+- I have added a 'page not found' route which gets matched when the route does not contain /api/image.
+- I have added test cases for the /api/image and processImage with sharp functionalities.
+- I have carried out appropriate error handling and used the correct error status codes.
+- I have made sure I can cache all thumbnails images with different sizes.
+- I have added a logger middleware which logs the route url that is being accessed.
