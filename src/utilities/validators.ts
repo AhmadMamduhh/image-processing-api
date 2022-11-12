@@ -12,7 +12,7 @@ export const imageValidator = (
   req: express.Request,
   res: express.Response,
   next: express.NextFunction
-) => {
+): void => {
   if (Object.keys(req.query).length === 0) {
     res
       .status(400)
