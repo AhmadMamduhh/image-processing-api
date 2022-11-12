@@ -1,11 +1,13 @@
 Important scripts: 
 
-1- Build: npm run build
-2- Test: npm run test
-3- Start: npm run start
-4- Lint: npm run lint
-5- Lint and fix: npm run lint-and-fix
-6- Prettier: npm run prettier
+1- Install: npm install (Please install first before trying to use any other script)
+2- Build: npm run build
+3- Test: npm run test
+4- Start: npm run start
+5- Lint: npm run lint
+6- Lint and fix: npm run lint-and-fix
+7- Prettier: npm run prettier
+
 
 
 API Endpoints:
